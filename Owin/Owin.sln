@@ -1,14 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Owin.Run", "Owin.Run\Owin.Run.csproj", "{70201820-C320-44ED-AA8E-6F591374F320}"
-	ProjectSection(ProjectDependencies) = postProject
-		{0014928C-01D1-4CFE-8E6F-7EDB39E27888} = {0014928C-01D1-4CFE-8E6F-7EDB39E27888}
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Owin.WebApiServer", "Owin.Server\Owin.WebApiServer.csproj", "{0014928C-01D1-4CFE-8E6F-7EDB39E27888}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Owin.Server", "Owin.Server\Owin.Server.csproj", "{0014928C-01D1-4CFE-8E6F-7EDB39E27888}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Owin.Console", "Owin.Console\Owin.Console.csproj", "{B2180091-8C96-4C43-B7B4-5FEA832FB830}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Owin.Service", "Owin.Service\Owin.Service.csproj", "{1F910D2B-F34D-499D-BF44-04FB91958E9C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -16,14 +15,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{70201820-C320-44ED-AA8E-6F591374F320}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{70201820-C320-44ED-AA8E-6F591374F320}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{70201820-C320-44ED-AA8E-6F591374F320}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{70201820-C320-44ED-AA8E-6F591374F320}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0014928C-01D1-4CFE-8E6F-7EDB39E27888}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0014928C-01D1-4CFE-8E6F-7EDB39E27888}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0014928C-01D1-4CFE-8E6F-7EDB39E27888}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0014928C-01D1-4CFE-8E6F-7EDB39E27888}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2180091-8C96-4C43-B7B4-5FEA832FB830}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2180091-8C96-4C43-B7B4-5FEA832FB830}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2180091-8C96-4C43-B7B4-5FEA832FB830}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2180091-8C96-4C43-B7B4-5FEA832FB830}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F910D2B-F34D-499D-BF44-04FB91958E9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F910D2B-F34D-499D-BF44-04FB91958E9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F910D2B-F34D-499D-BF44-04FB91958E9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F910D2B-F34D-499D-BF44-04FB91958E9C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
