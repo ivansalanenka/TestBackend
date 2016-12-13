@@ -6,15 +6,22 @@ using System.Net.Http;
 using System.Web.Http;
 using System.IO;
 using Newtonsoft.Json.Linq;
+using Owin.Server.ViewModels;
 
 namespace Owin.Server.Controllers
 {
     public class ScopesController : ApiController
     {
         // GET: api/Scopes
-        public JArray Get()
+        public IEnumerable<ScopeViewModel> Get()
         {
-            return JArray.Parse(File.ReadAllText(@"./test_data/scopes.json"));
+            return DB.Scopes.Select(scope => new ScopeViewModel 
+            {
+                Id = scope.Id.ToString(),
+                Label = scope.Name,
+                IconId = scope.IconId,
+                CategoryId = scope.CategoryId.ToString()
+            });
         }
     }
 }

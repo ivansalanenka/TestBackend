@@ -75,6 +75,7 @@
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -120,13 +121,34 @@
     <Compile Include="Controllers\BrandProductsController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\ClientsController.cs" />
-    <Compile Include="Controllers\ProjectOwnersController.cs" />
+    <Compile Include="Controllers\ProjectTeamController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\ProjectTypesController.cs" />
     <Compile Include="Controllers\RegionMarketsController.cs" />
     <Compile Include="Controllers\ScopesController.cs" />
+    <Compile Include="DB.cs" />
+    <Compile Include="Entities\Brand.cs" />
+    <Compile Include="Entities\Category.cs" />
+    <Compile Include="Entities\Client.cs" />
+    <Compile Include="Entities\ClientMarket.cs" />
+    <Compile Include="Entities\Market.cs" />
+    <Compile Include="Entities\Product.cs" />
+    <Compile Include="Entities\ProjectType.cs" />
+    <Compile Include="Entities\Region.cs" />
+    <Compile Include="Entities\Scope.cs" />
+    <Compile Include="Entities\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Server.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\BrandViewModel.cs" />
+    <Compile Include="ViewModels\CategoryViewModel.cs" />
+    <Compile Include="ViewModels\ClientViewModel.cs" />
+    <Compile Include="ViewModels\MarketViewModel.cs" />
+    <Compile Include="ViewModels\ProductViewModel.cs" />
+    <Compile Include="ViewModels\ProjectTypeViewModel.cs" />
+    <Compile Include="ViewModels\RegionViewModel.cs" />
+    <Compile Include="ViewModels\ScopeViewModel.cs" />
+    <Compile Include="ViewModels\UserViewModel.cs" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>

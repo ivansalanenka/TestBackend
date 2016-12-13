@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
+using Owin.Server.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,9 +12,14 @@ namespace Owin.Server.Controllers
 {
     public class CategoriesController : ApiController
     {
-        public JArray Get()
+        public IEnumerable<CategoryViewModel> Get()
         {
-            return JArray.Parse(File.ReadAllText(@"./test_data/categories.json"));
+            return DB.Categories.Select(category => new CategoryViewModel 
+            {
+                Id = category.Id.ToString(),
+                Label = category.Name,
+                Color = category.Color
+            });
         }
     }
 }

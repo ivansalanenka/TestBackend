@@ -26,31 +26,34 @@ namespace Owin.Server
 
             app.UseWebApi(config);
 
-            app.Map("", spa =>
+            if (bool.Parse(ConfigurationManager.AppSettings["ServeUI"]) == true)
             {
-                spa.Use((context, next) =>
+                app.Map("", spa =>
                 {
-                    if (context.Request.Path.ToUriComponent().Contains(".js")) { return next(); }
-                    if (context.Request.Path.ToUriComponent().Contains(@"/img/")) { return next(); }
-                    if (context.Request.Path.ToUriComponent().Contains(@"/fonts/")) { return next(); }
-                    if (context.Request.Path.ToUriComponent().Contains(@"/css/")) { return next(); }
+                    spa.Use((context, next) =>
+                    {
+                        if (context.Request.Path.ToUriComponent().Contains(".js")) { return next(); }
+                        if (context.Request.Path.ToUriComponent().Contains(@"/img/")) { return next(); }
+                        if (context.Request.Path.ToUriComponent().Contains(@"/fonts/")) { return next(); }
+                        if (context.Request.Path.ToUriComponent().Contains(@"/css/")) { return next(); }
 
-                    context.Request.Path = new PathString("/");
+                        context.Request.Path = new PathString("/");
 
-                    return next();
+                        return next();
+                    });
+
+                    var physicalFileSystem = new PhysicalFileSystem(ConfigurationManager.AppSettings["ClientFolder"]);
+                    var options = new FileServerOptions
+                    {
+                        EnableDefaultFiles = true,
+                        FileSystem = physicalFileSystem
+                    };
+                    options.StaticFileOptions.FileSystem = physicalFileSystem;
+                    options.StaticFileOptions.ServeUnknownFileTypes = true;
+                    options.DefaultFilesOptions.DefaultFileNames = new[] { "index.html" };
+                    spa.UseFileServer(options);
                 });
-
-                var physicalFileSystem = new PhysicalFileSystem(ConfigurationManager.AppSettings["ClientFolder"]);
-                var options = new FileServerOptions
-                {
-                    EnableDefaultFiles = true,
-                    FileSystem = physicalFileSystem
-                };
-                options.StaticFileOptions.FileSystem = physicalFileSystem;
-                options.StaticFileOptions.ServeUnknownFileTypes = true;
-                options.DefaultFilesOptions.DefaultFileNames = new[] { "index.html" };
-                spa.UseFileServer(options);
-            });
+            }
         }
     }
 }
