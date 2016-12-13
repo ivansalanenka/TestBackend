@@ -6,15 +6,19 @@ using System.Net.Http;
 using System.Web.Http;
 using System.IO;
 using Newtonsoft.Json.Linq;
+using Owin.Server.ViewModels;
 
 namespace Owin.Server.Controllers
 {
     public class ClientsController : ApiController
     {
-        // GET: api/Clients
-        public JArray Get()
+        public IEnumerable<ClientViewModel> Get()
         {
-            return JArray.Parse(File.ReadAllText(@"./test_data/clients.json"));
+            return DB.Clients.Select(client => new ClientViewModel
+            {
+                Id = client.Id.ToString(),
+                Name = client.Name
+            });
         }
     }
 }
