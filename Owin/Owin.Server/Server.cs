@@ -21,6 +21,11 @@ namespace Owin.Server
             _server = WebApp.Start<Startup>(startOptions);
         }
 
+        public void Stop()
+        {
+            _server.Dispose();
+        }
+
         public void Dispose()
         {
             if (_server != null)

@@ -1,4 +1,5 @@
 ﻿using Owin.Server;
+using Topshelf;
 
 namespace Owin.Run
 {
@@ -6,14 +7,19 @@ namespace Owin.Run
     {
         static void Main(string[] args)
         {
-            using (var server = new Owin.Server.Server(ConfigurationManager.Url))
+            HostFactory.Run(x =>
             {
-                server.Start();
-                System.Console.WriteLine("Application is started...");
-                System.Console.WriteLine("Url: {0}", ConfigurationManager.Url);
-                System.Console.WriteLine("Press a key to stop..");
-                System.Console.ReadKey();
-            }
+                x.Service<Owin.Server.Server>(s =>
+                {
+                    s.ConstructUsing(name => new Owin.Server.Server(ConfigurationManager.Url));
+                    s.WhenStarted(tc => tc.Start());
+                    s.WhenStopped(tc => tc.Stop());
+                });
+                x.RunAsLocalSystem();
+    
+                x.SetDisplayName("MoboTest");
+                x.SetServiceName("MoboTest");
+            });
         }
     }
 }
