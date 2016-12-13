@@ -121,7 +121,8 @@
     <Compile Include="Controllers\BrandProductsController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\ClientsController.cs" />
-    <Compile Include="Controllers\ProjectOwnersController.cs" />
+    <Compile Include="Controllers\ProjectTeamController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\ProjectTypesController.cs" />
     <Compile Include="Controllers\RegionMarketsController.cs" />
     <Compile Include="Controllers\ScopesController.cs" />

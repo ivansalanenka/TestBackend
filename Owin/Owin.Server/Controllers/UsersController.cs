@@ -10,7 +10,7 @@ using Owin.Server.ViewModels;
 
 namespace Owin.Server.Controllers
 {
-    public class ProjectOwnersController : ApiController
+    public class UsersController : ApiController
     {
         // GET: api/ProjectOwners
         public IEnumerable<UserViewModel> Get()
