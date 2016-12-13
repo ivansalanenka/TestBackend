@@ -17,7 +17,7 @@ namespace Owin.Service
                     server.WhenStopped(tc => tc.Stop());
                 });
 
-                x.RunAsNetworkService();
+                x.RunAsLocalService();
 
                 x.SetDisplayName(ConfigurationManager.AppSettings["ServiceName"]);
                 x.SetServiceName(ConfigurationManager.AppSettings["ServiceDisplayName"]);
