@@ -18,23 +18,14 @@ namespace Owin.Server.Controllers
         {
             var contents = ParseContent(Request.Content);
             var file = (byte[])contents["file"]["File"];
+            string filePath = string.Format("ui/files/{0}", contents["file"]["FileName"]);
 
-            if (!Directory.Exists("ui"))
-            {
-                Directory.CreateDirectory("ui");
-            }
-
-            if (!Directory.Exists("ui/files"))
-            {
-                Directory.CreateDirectory("ui/files");
-            }
-
-            using (var fileStream = File.Create($"ui/files/{contents["file"]["FileName"]}"))
+            using (var fileStream = File.Create(filePath))
             {
                 fileStream.Write(file, 0, file.Length);
             }
 
-            return $"files/{contents["file"]["FileName"]}";
+            return string.Format("files/{0}", contents["file"]["FileName"]);
         }
 
         public static Dictionary<string, Dictionary<string, object>> ParseContent(HttpContent content)
