@@ -161,7 +161,12 @@
     <Compile Include="ViewModels\ScopeViewModel.cs" />
     <Compile Include="ViewModels\UserViewModel.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Owin.Authentication\Owin.Authentication.csproj">
+      <Project>{f82a85a1-49aa-496c-a5a4-7e2cfb87ebca}</Project>
+      <Name>Owin.Authentication</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

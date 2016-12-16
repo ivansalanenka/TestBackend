@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.Owin;
 using Microsoft.Owin.FileSystems;
 using Microsoft.Owin.StaticFiles;
+using Owin.Authentication.Middlewares;
 using Owin;
 using System.Web.Http;
 
@@ -15,6 +16,8 @@ namespace Owin.Server
     {
         public void Configuration(IAppBuilder app)
         {
+            app.Use<VelocidiAuthenticationMiddleware>();
+
             // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=316888
             HttpConfiguration config = new HttpConfiguration();
             config.Routes.MapHttpRoute(
