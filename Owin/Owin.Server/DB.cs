@@ -8,6 +8,7 @@ namespace Owin.Server
 {
     public static class DB
     {
+        public static Random random = new Random(DateTime.Now.Millisecond);
         public static List<User> Users { get; set; }
         public static List<Category> Categories { get; set; }
         public static List<Scope> Scopes { get; set; }
@@ -18,9 +19,25 @@ namespace Owin.Server
         public static List<ClientMarket> ClientMarkets { get; set; }
         public static List<Brand> Brands { get; set; }
         public static List<Product> Products { get; set; }
+        public static List<Project> Projects { get; set; }
+        public static List<ProjectScope> ProjectScopes { get; set; }
+        public static List<ProjectTeamMember> ProjectTeamMembers { get; set; }
+
+        public static int GetRandomExcept(int maxValue, IEnumerable<int> except)
+        {
+            int result = 0;
+
+            do
+            {
+                result = random.Next(maxValue);
+            } while (except.Contains(result));
+
+            return result;
+        }
 
         static DB()
         {
+            
 
             //Users
             Users = new List<User> { 
@@ -48,7 +65,7 @@ namespace Owin.Server
                 new Category(){Id = 6, Name = "measurement & optimization", Color="#A12B4B"},
                 new Category(){Id = 7, Name = "administration", Color="#42183E"}
             };
-            
+
             //Scopes
             Scopes = new List<Scope> { 
                 new Scope{Id = 0,  Name = "Client Brief/Opportunity", IconId = "fa-child", CategoryId = 0},
@@ -81,7 +98,7 @@ namespace Owin.Server
                 new ProjectType{Id = 3, Name = "Project Type 4"},
                 new ProjectType{Id = 4, Name = "Project Type 5"}
             };
-            
+
             //Clients
             Clients = new List<Client> {
                 new Client{ Id = 0, Name = "Coca-Cola"},
@@ -89,7 +106,7 @@ namespace Owin.Server
                 new Client{ Id = 2, Name = "Mercedes"},
                 new Client{ Id = 3, Name = "Ford"}
             };
-            
+
             //Regions
             Regions = new List<Region> { 
                 new Region{Id = 0 , Name = "North America" },
@@ -134,7 +151,7 @@ namespace Owin.Server
 
                     ClientMarkets.Add(new ClientMarket { ClientId = client.Id, MarketId = Markets[marketIndex].Id });
 
-                    marketIndex += 5; 
+                    marketIndex += 5;
                 }
             }
 
@@ -163,6 +180,62 @@ namespace Owin.Server
                     productId++;
                 }
             }
+
+            
+            //Project            
+            
+
+            Project formulaProject = new Project 
+            {
+                Id = 0,
+                Name = "Formula 1 project",
+                ClientId = Clients[random.Next(Clients.Count)].Id,
+                MarketId = Markets[random.Next(Markets.Count)].Id,
+                OwnerId = Users[random.Next(Users.Count)].Id,
+                ProductId = Products[random.Next(Products.Count)].Id,
+                ProjectTypeId = ProjectTypes[random.Next(ProjectTypes.Count)].Id,
+                BannerInfo = new ProjectBannerInfo
+                {
+                    ImageUrl = "img/announcement4.jpg",
+                    ImagePosition = new Position { Top = 0, Left = 100 },
+                    Color = "#af4486"
+                }
+            };
+
+            //ProjectTeamMembers
+            ProjectTeamMembers = new List<ProjectTeamMember>();
+            for (int i = 0; i < 5; i++)
+            {
+                ProjectTeamMembers.Add(new ProjectTeamMember 
+                {
+                    ProjectId = formulaProject.Id,
+                    UserId = GetRandomExcept(Users.Count, ProjectTeamMembers.Select(ptm => ptm.UserId))
+                });
+            }
+
+            //ProjectScopes
+            ProjectScopes = new List<ProjectScope>();
+
+            for (int i = 0; i < 10; i++)
+            {
+                int tasksCount = random.Next(20);
+                int completedTasksCount = random.Next(tasksCount);
+
+                ProjectScopes.Add(new ProjectScope 
+                {
+                    Id = i,
+                    ProjectId = formulaProject.Id,
+                    ScopeId = Scopes[random.Next(Scopes.Count)].Id,
+                    OwnerId = Users[random.Next(Users.Count)].Id,
+                    TasksCount = tasksCount,
+                    CompletedTasksCount = completedTasksCount,
+                    SortOrder = i,
+                    DueDate = DateTime.Now.AddDays(random.Next(Users.Count))
+                });
+            }
+
+            //Projects
+            Projects = new List<Project>{formulaProject};
         }
     }
 }

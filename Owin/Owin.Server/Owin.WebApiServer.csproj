@@ -121,6 +121,7 @@
     <Compile Include="Controllers\BrandProductsController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\ClientsController.cs" />
+    <Compile Include="Controllers\ProjectInfoController.cs" />
     <Compile Include="Controllers\ProjectTeamController.cs" />
     <Compile Include="Controllers\FileUploadController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -133,7 +134,12 @@
     <Compile Include="Entities\Client.cs" />
     <Compile Include="Entities\ClientMarket.cs" />
     <Compile Include="Entities\Market.cs" />
+    <Compile Include="Entities\Position.cs" />
     <Compile Include="Entities\Product.cs" />
+    <Compile Include="Entities\Project.cs" />
+    <Compile Include="Entities\ProjectBannerInfo.cs" />
+    <Compile Include="Entities\ProjectScope.cs" />
+    <Compile Include="Entities\ProjectTeamMember.cs" />
     <Compile Include="Entities\ProjectType.cs" />
     <Compile Include="Entities\Region.cs" />
     <Compile Include="Entities\Scope.cs" />
@@ -141,12 +147,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Server.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\BannerInfoViewModel.cs" />
     <Compile Include="ViewModels\BrandViewModel.cs" />
     <Compile Include="ViewModels\CategoryViewModel.cs" />
     <Compile Include="ViewModels\ClientViewModel.cs" />
     <Compile Include="ViewModels\MarketViewModel.cs" />
+    <Compile Include="ViewModels\PositionViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
+    <Compile Include="ViewModels\ProjectScopeViewModel.cs" />
     <Compile Include="ViewModels\ProjectTypeViewModel.cs" />
+    <Compile Include="ViewModels\ProjectViewModel.cs" />
     <Compile Include="ViewModels\RegionViewModel.cs" />
     <Compile Include="ViewModels\ScopeViewModel.cs" />
     <Compile Include="ViewModels\UserViewModel.cs" />
